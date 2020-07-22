@@ -8,3 +8,7 @@ Implementation in modern C++ of the [Lex-BFS](https://en.wikipedia.org/wiki/Lexi
 make
 ./bin/main instance_name
 ```
+
+## References
+
+1. Graph instances : https://mat.tepper.cmu.edu/COLOR/instances.html
