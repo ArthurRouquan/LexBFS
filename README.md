@@ -4,13 +4,13 @@ Implementation in modern C++ of the [Lex-BFS](https://en.wikipedia.org/wiki/Lexi
 
 ## How to run it?
 
-```console
+```
 $ make
 $ ./bin/main instance_name
 ```
 
 Output example (with uncommented print lines)
-```console
+```
 $ ./bin/main myciel3
 Input graph G(V, E) instance:
    * Name: myciel3
