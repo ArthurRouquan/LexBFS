@@ -8,8 +8,6 @@ Implementation in modern C++ of the [Lex-BFS](https://en.wikipedia.org/wiki/Lexi
 $ make
 $ ./bin/main instance_name
 ```
-
-<<<<<<< HEAD
 Output example:
 ```
 $ ./bin/main toy2
