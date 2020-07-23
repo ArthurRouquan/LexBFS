@@ -22,11 +22,10 @@ struct VertexView {
 
 auto lexBFS(const Graph& graph, std::optional<std::size_t> starting_vertex = std::nullopt)
 {
-    /* returns the Lexicographic Breadth-First Search (Lex-BFS) ordering of the given
-       graph G(V, E) and a (0 by default) starting vertex in O(|V| + |E|).
-       Remove the commented lines to print the iterations. */
+    /* Returns the Lexicographic Breadth-First Search (Lex-BFS) ordering of the given
+       graph G = (V, E) and a (0 by default) starting vertex in O(|V| + |E|). */
 
-    std::vector<std::size_t> ordering(graph.n); // vertices sorted by order of priority
+    std::vector<std::size_t> ordering(graph.n); // vertices sorted by descending order of priority
     std::iota(begin(ordering), end(ordering), 0);
 
     std::list<Interval> intervals{{begin(ordering), --end(ordering)}};
