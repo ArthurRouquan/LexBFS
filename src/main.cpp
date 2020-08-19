@@ -7,7 +7,7 @@
 int main(int argc, char *argv[])
 {
     std::string instance = (argc >= 2 ? argv[1] : "toy2");
-    auto graph = read_instance<size_t>("graph_instances/" + instance + ".col");
+    auto graph = read_instance<std::size_t>("graph_instances/" + instance + ".col");
     printf("Input graph G = (V, E) instance:\n   * Name: %s\n   * |V| = %zu\n   * |E| = %zu\n",
         instance.c_str(), graph.nb_vertices(), graph.nb_edges());
     
