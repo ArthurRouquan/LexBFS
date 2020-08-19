@@ -13,24 +13,26 @@ auto is_chordal(const Graph& graph)
        G = (V, E). Slighty modificated version of FILL Algorithm found in the
        article "Algorithmic aspects of vertex elimination on graphs" (1976)
        (Rose, Tarjan, Lueker) */
-
+    
+    using node_t = typename Graph::node_t;
+    
     auto ordering = lexBFS(graph);
 
-    std::vector<std::size_t> index(graph.nb_vertices());    
-    for (std::size_t i = 0; i < graph.nb_vertices(); ++i)
+    std::vector<node_t> index(graph.nb_vertices());    
+    for (node_t i = 0; i < graph.nb_vertices(); ++i)
         index[ordering[i]] = i;
 
-    std::vector<std::size_t> test(graph.nb_vertices(), graph.nb_vertices() + 1);
+    std::vector<node_t> test(graph.nb_vertices(), graph.nb_vertices() + 1);
     
     for (const auto& vertex : ordering)
     {
-        std::size_t idx_parent = graph.nb_vertices() + 1;
-        std::size_t counter = 0;
+        node_t idx_parent = graph.nb_vertices() + 1;
+        node_t counter = 0;
 
         for (const auto& neighbor : graph.neighbors(vertex))
             if (index[neighbor] > index[vertex]) {
                 test[neighbor] = vertex;
-                idx_parent = std::min<std::size_t>(idx_parent, index[neighbor]);
+                idx_parent = std::min<node_t>(idx_parent, index[neighbor]);
                 ++counter;
             }
         
