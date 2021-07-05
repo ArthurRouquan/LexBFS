@@ -1,23 +1,18 @@
-# Lexicographic Breadth-First Search Algorithm in modern C++
+# Lexicographic Breadth-First Search Algorithm
 
 Implementation in modern C++ of the [Lex-BFS](https://en.wikipedia.org/wiki/Lexicographic_breadth-first_search) algorithm based on the idea of partition refinement (first developed by Donald J. Rose, Robert E. Tarjan, and George S. Lueker), in linear time O(|V| + |E|) given a graph G = (V, E) and an optional starting vertex.
 
 ## How to run it?
 
+This project uses CMake. To run the executable you need to pass a graph instance .col file:
+
 ```
-$ make
-$ ./bin/main instance_name
-```
-Output example:
-```
-$ ./bin/main toy2
-Input graph G = (V, E) instance:
-   * Name: toy2
-   * |V| = 7
-   * |E| = 14
-Lex-BFS ordering = [0,1,2,3,6,4,5]
-Lex-BFS algorithm duration: 4 µs
-Graph is chordal.
+$ lexbfs ../graph_instances/toy2.col
+
+Input instance G = (V, E) - |V| = 7, |E| = 14
+Lex-BFS ordering: 0 1 2 3 6 4 5 
+Lex-BFS algorithm's duration: 4 us
+The graph is chordal.
 ```
 
 ## References

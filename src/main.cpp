@@ -1,31 +1,22 @@
-#include <cstdio>
+#include "graph.hpp"
+#include "instance_reader.hpp"
+#include "lexbfs.hpp"
 #include <chrono>
-#include "graph.h"
-#include "lexbfs.h"
-#include "is_chordal.h"
+#include <iostream>
 
-int main(int argc, char *argv[])
+
+int main(int argc, char* argv[])
 {
-    std::string instance = (argc >= 2 ? argv[1] : "toy2");
-    auto graph = read_instance<std::size_t>("graph_instances/" + instance + ".col");
-    printf("Input graph G = (V, E) instance:\n   * Name: %s\n   * |V| = %zu\n   * |E| = %zu\n",
-        instance.c_str(), graph.nb_vertices(), graph.nb_edges());
-    
-    auto print_ordering = [](const auto& ordering) {
-        printf("Lex-BFS ordering = [");
-        std::for_each(begin(ordering), --end(ordering), [](auto i) { printf("%zu,", i); });
-        printf("%zu]\n", *--end(ordering));
-    };
-    
-    {
-        auto time_start = std::chrono::steady_clock::now();
-        auto ordering = lexBFS(graph);
-        auto duration = duration_cast<std::chrono::microseconds>(std::chrono::steady_clock::now() - time_start).count();
-        printf("Lex-BFS algorithm duration: %zd µs\n", duration);
-        print_ordering(ordering);
-    }
+    if (argc != 2) throw std::runtime_error("No input file.");
+    Graph graph{read_col_instance(argv[1])};
+    std::printf("\nInput instance G = (V, E) - |V| = %zu, |E| = %zu\n", graph.nb_vertices(), graph.nb_edges());
 
-    printf("Graph %s chordal.\n", is_chordal(graph) ? "is" : "isn't");
-    
-    return EXIT_SUCCESS;
+    auto start = std::chrono::steady_clock::now();
+    auto ordering = lexBFS(graph);
+    auto duration = duration_cast<std::chrono::microseconds>(std::chrono::steady_clock::now() - start).count();
+
+    std::printf("Lex-BFS ordering: ");
+    for (auto v : ordering) std::printf("%zu ", v);
+    std::printf("\nLex-BFS algorithm's duration: %zu us", duration);
+    std::printf("\nThe graph %s chordal.\n", is_chordal(graph) ? "is" : "isn't");
 }
