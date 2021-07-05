@@ -2,6 +2,10 @@
 
 Implementation in C++20 of the [Lex-BFS](https://en.wikipedia.org/wiki/Lexicographic_breadth-first_search) algorithm based on the idea of partition refinement (first developed by Donald J. Rose, Robert E. Tarjan, and George S. Lueker), in linear time O(|V| + |E|) given a graph G = (V, E) and an optional starting vertex. This implementation was made for educational purposes.
 
+## Data structures
+
+![GitHub Logo](/img/data_structures.png)
+
 ## How to run it?
 
 This project uses CMake. To run the executable you need to pass a graph instance .col file:
